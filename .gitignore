@@ -88,3 +88,16 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Ignore all files in Executables directory
+Executables/*
+
+# Ignore all files in Cache directory
+Cache/*
+
+# Do not ignore .md, .txt files in the Executables directory
+!Executables/*.md
+!Executables/*.txt
+
+# Do not ignore .md files in the Cache directory
+!Cache/*.md
