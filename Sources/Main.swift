@@ -1,21 +1,47 @@
 import Foundation
 
-func createMatrix(with number: Int) -> [[Int]] {
-    let matrixSize = 4
-    return Array(repeating: Array(repeating: number, count: matrixSize), count: matrixSize)
-}
+// MARK: - Launch options
 
-func printMatrix(_ matrix: [[Int]]) {
-    for row in matrix {
-        print(row.map { String($0) }.joined(separator: " "))
+enum MainUseCases: Int, CaseIterable {
+    case selectDataSet
+    case showcaseGradientDescent
+    
+    var description: String {
+        switch self {
+        case .selectDataSet:
+            return "Select Data Set"
+        case .showcaseGradientDescent:
+            return "Showcase Gradient Descent"
+        }
+    }
+    
+    func launchPath() {
+        switch self {
+        case .selectDataSet:
+            print("### Exit, [\(self.description)] not implemented")
+        case .showcaseGradientDescent:
+            readInputForSimpleGradientDescentAndLaunch()
+        }
     }
 }
 
-print("Enter a number: ", terminator: "")
-if let input = readLine(), let number = Int(input) {
-    let matrix = createMatrix(with: number)
-    print("4x4 Matrix:")
-    printMatrix(matrix)
-} else {
-    print("Invalid input. Please enter an integer.")
+// MARK: - Main
+
+@main
+fileprivate struct Main {
+    static func main() {
+        displayAndSelectUseCase()
+    }
+    
+    static func displayAndSelectUseCase() {
+        print("> Select option:")
+        for useCase in MainUseCases.allCases {
+            print("- \(useCase.rawValue). \(useCase.description)")
+        }
+        if let input = readLine(), let selection = Int(input), let useCase = MainUseCases(rawValue: selection) {
+            useCase.launchPath()
+        } else {
+            displayAndSelectUseCase() 
+        }
+    }
 }

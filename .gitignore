@@ -91,13 +91,13 @@ iOSInjectionProject/
 
 # Ignore all files in Executables directory
 Executables/*
+!Executables/.gitkeep
 
 # Ignore all files in Cache directory
 Cache/*
+!Cache/.gitkeep
 
-# Do not ignore .md, .txt files in the Executables directory
-!Executables/*.md
-!Executables/*.txt
 
-# Do not ignore .md files in the Cache directory
-!Cache/*.md
+# Ignore all files in Models directory
+Models/*
+!Models/.gitkeep
